@@ -1,7 +1,14 @@
 #Game of Life in Python
 
-##Terminal interactions
-We'll ask the user for input about the size of the grid and proportion ot be created containing life.
+##Standard Settings:
+With a full-screen terminal, you should be able to run the game.py script to see the game run as a loop.
 
-##Playing
-To start, we'll draw the grid when the user makes a call to a makeTurn() method. In the future, we need to automate that.
+##Using as a module:
+Create a new instance of Game() with optional parameters:
+m -- the height of the grid
+n -- the width of the grid
+f -- the probability that any one cell in the grid will harbor life at the game's onset
+
+
+
+

@@ -2,7 +2,7 @@ import random
 import time
 
 class Game:
-   def __init__(self, m=10, n=10, fertility=False):
+   def __init__(self, m=20, n=20, fertility=False):
       print 'new game created'
       #Start by defining a m x n grid size
       self.m = m  #m rows
@@ -20,11 +20,6 @@ class Game:
          for cell in range(0,self.m*self.n):
             self.grid.append(random.random()<fertility)
       seedCellsToGrid()
-   
-   #Get the array index given i,j
-#   def cellIndex(self, i, j):
-#      assert i>=0 and j>=0 and i<self.m and j<self.n, 'Grid is ' + str(self.m) + 'x' +str(self.n)+ ', cannot access cell ' + str(i)+','+str(j)
-#      return i*self.n + j
 
    #Get the value of cell at location i,j
    def cell(self,i,j):
@@ -37,14 +32,20 @@ class Game:
    #Print the grid of cells
    def printGrid(self):
       #Print the mxn grid of cells
-      str= '\n'
+      str= '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n'
+      for column in range(0,self.n):
+         str = str + '---'
+      str = str + '\n' 
       for i in range (0,self.m):
+         str = str + '|'
          for j in range(0,self.n):
             if self.cell(i,j):
                str = str + '*  '
             else:
                str = str + '   '
-         str = str + '\n'
+         str = str + '|\n'
+      for column in range(0,self.n):
+         str = str + '---'
       print str
 
    #Given the (i,j)th cell, count its live neighbors
@@ -91,11 +92,23 @@ class Game:
       except:
          return False
 
+   def run(self):
+      sleep=.07 
+      while(not self.historyRepeats()):
+         self.printGrid()
+         self.nextStep()
+         time.sleep(sleep)
+
+      for i in range(0,20):
+         self.printGrid()
+         self.nextStep()
+         time.sleep(sleep)
+
 
 if __name__ == '__main__':
    sleep=.07
    width=50
-   height=40
+   height=37
    density=.2
    
    def runSimulation(sleep,width,height,density):
